@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhong.springcloud.dao.PaymentDao">
+
+    <!-- keyProperty="id" 主键 ，useGeneratedKeys="true" 表示数据插入数据库成功后，获取自动生成的主键值，如果只设置 useGeneratedKeys="true"-->
+    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment(serial) values (#{serial});
+    </insert>
+
+
+    <!--column是数据库的，property是java里的 -->
+    <resultMap id="BaseResultMap" type="com.zhong.springcloud.entities.Payment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--mybatis 非常的智能，如果配置了resultMap，返回值统一使用 resultMap=“BaseResultMap”，mybatis会根据查询到的条目数量自动进行判断，如果是一条就返回对象，如果是多条就返回List对象列表。-->
+    <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
+        select * from payment where id = #{id};
+    </select>
+
+</mapper>
