@@ -13,7 +13,13 @@
 
 
     <dependencies>
-
+        <!-- 链路追踪 begin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>2.2.2.RELEASE</version>
+        </dependency>
+        <!-- 链路追踪 end -->
         <!--netflix-eureka-client-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
